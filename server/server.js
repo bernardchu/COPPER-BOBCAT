@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('./db');
+//var db = require('./db');
 var app = express();
 
 var port = process.env.PORT || 3000;
