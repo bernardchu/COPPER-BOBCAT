@@ -19,6 +19,9 @@
   "homepage": "https://github.com/RTakes/COPPER-BOBCAT",
   "dependencies": {
     "express": "^4.10.4",
+    "passport": "^0.2.1",
+    "passport-google": "^0.3.0",
     "sequelize": "^2.0.0-rc2"
   }
 }
+
