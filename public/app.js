@@ -7,7 +7,7 @@ bobcatApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
-        templateUrl: 'lib/questions/questions.html',
+        templateUrl: 'questions/questions.html',
         controller: 'QuestionsController'
       })
   }]);
