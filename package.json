@@ -1,0 +1,24 @@
+{
+  "name": "COPPER-BOBCAT",
+  "version": "1.0.0",
+  "description": "An app for developers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RTakes/COPPER-BOBCAT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RTakes/COPPER-BOBCAT/issues"
+  },
+  "homepage": "https://github.com/RTakes/COPPER-BOBCAT",
+  "dependencies": {
+    "express": "^4.10.4",
+    "sequelize": "^2.0.0-rc2"
+  }
+}
