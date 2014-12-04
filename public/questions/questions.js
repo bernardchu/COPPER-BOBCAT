@@ -5,24 +5,22 @@ angular.module('copperBobcat.questions', [])
 
 }).factory('Questions', function() {
   //Linked list?
-  var questions = [{question: "function add(a, b) {\n return a + b \n} \n add(12, 3)"}];
-  var questionIndex = 0;
-  var isAnswered = false;
+  var questions = {};
+  questions.list = [{question:"\nfunction add(a, b) {\n return a + b \n} \nadd(12, 3)", answer: '15'}];
+  questions.index = 0;
+  questions.isAnswered = false;
   
-  var tap = function(){
-    if(isAnswered) {
-      isAnswered = false;
-      questionIndex += 1;
+  questions.tap = function(){
+    if(questions.isAnswered) {
+      questions.isAnswered = false;
+      questions.index += 1;
     } else {
-      isAnswered = true;
+      questions.isAnswered = true;
     }
   };
 
   return {
-    questions: questions,
-    questionIndex: questionIndex, 
-    isAnswered: isAnswered,
-    tap: tap
+    questions: questions
   };
 
 });
