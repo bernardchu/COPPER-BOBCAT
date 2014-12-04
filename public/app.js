@@ -1,13 +1,15 @@
 var bobcatApp = angular.module('copperBobcat', [
-  'ngRoute',
+  'ui.router',
   'copperBobcat.questions'
 ]);
 
-bobcatApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/', {
-        templateUrl: 'lib/questions/questions.html',
+bobcatApp.config(
+function($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise('/');
+    $stateProvider.
+      state('question', {
+      	url: '/',
+        templateUrl: '/questions/questions.html',
         controller: 'QuestionsController'
       })
-  }]);
+  });

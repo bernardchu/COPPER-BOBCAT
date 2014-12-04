@@ -1,6 +1,6 @@
 var Sequelize = require('Sequelize');
-var sequelize = new Sequelize('', 'root', '', {
-	dialect: "mysql",
+var sequelize = new Sequelize('copperdb', 'copperdb', 'Copper2014!', {
+	dialect: "sql",
 	port: 3000,
 });
 
