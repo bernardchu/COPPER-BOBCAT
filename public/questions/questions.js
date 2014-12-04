@@ -1,4 +1,4 @@
-angular.module('copperBobcat.questions', ['ngRoute'])
+angular.module('copperBobcat.questions', [])
 .controller('QuestionsController', function ($scope, Questions, $http) {
 
   angular.extend($scope, Questions);
@@ -22,7 +22,6 @@ angular.module('copperBobcat.questions', ['ngRoute'])
     questions: questions,
     questionIndex: questionIndex, 
     isAnswered: isAnswered,
-    addLink: addLink,
     tap: tap
   };
 
