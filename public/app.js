@@ -1,6 +1,7 @@
 var bobcatApp = angular.module('copperBobcat', [
   'ui.router',
-  'copperBobcat.questions'
+  'copperBobcat.questions',
+  'hljs'
 ]);
 
 bobcatApp.config(

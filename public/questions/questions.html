@@ -1,11 +1,12 @@
 <div id='container' ng-controller='QuestionsController' ng-click="questions.tap()"> 
-  <h3>Question Here</h3>
-  <pre ng-if="!questions.isAnswered">
+  <pre id='code' ng-if="!questions.isAnswered">
     <code>
-      {{questions.list[questions.index].question}}
+      <span class='fontSize' hljs source="questions.list[questions.index].question">
+      	
+  	  </span>
     </code>    
   </pre>
-  <h1 ng-if="questions.isAnswered">
+  <h1 id='answer' class='fontSize' ng-if="questions.isAnswered">
       {{questions.list[questions.index].answer}}
    </h1>
 </div>
