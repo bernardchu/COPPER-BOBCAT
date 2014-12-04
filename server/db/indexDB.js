@@ -1,8 +1,5 @@
 var Sequelize = require('Sequelize');
-var sequelize = new Sequelize('copperdb', 'copperdb', 'Copper2014!', {
-	dialect: "sql",
-	port: 3000,
-});
+var sequelize = new Sequelize('copperdb', 'root');
 
 var User = sequelize.define('user', {
   username: Sequelize.STRING

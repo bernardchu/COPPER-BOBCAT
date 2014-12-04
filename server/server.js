@@ -1,5 +1,5 @@
 var express = require('express');
-//var db = require('./db');
+var db = require('./db/indexDB.js');
 var app = express();
 var config = require('./oauth.js');
 var session = require('express-session');
@@ -25,6 +25,7 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
+
 
 // authentication middleware
 app.use(session({ secret: 'my_precious' }));
