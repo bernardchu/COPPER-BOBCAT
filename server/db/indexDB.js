@@ -32,6 +32,12 @@ Category.hasMany(Question, { as: 'Category_Question', foreignKey: 'question_Id' 
 // newQueston.save().success(function() {
 //   console.log('Question Added');
 // });
+// 
+//   {question:"\nfunction add(a, b) {\n return a + b \n} \nadd(12, 3)", answer: '15'},
+  //{question:"\nfunction subtract(a, b) {\n return a - b \n} \nsubtract(12, 3)", answer: '9'},
+  //{question:"\nfunction divide(a, b) {\n return a / b \n} \ndivide(12, 3)", answer: '4'}
+// 
+// 
 
 // 
 //   {question:"\nfunction add(a, b) {\n return a + b \n} \nadd(12, 3)", answer: '15'},
@@ -51,7 +57,6 @@ Category.sync().then(function(){
 Question.sync().then(function(){
   console.log("Created Question");
 });
-
 
 exports.User = User;
 exports.Category = Category;
