@@ -1,6 +1,9 @@
 var Sequelize = require('Sequelize');
 
+
+function tempDB(){
   //MySql Connection
+  
   var sequelize = new Sequelize('copperdb', 'bcb996835c867c', 'ad7bf91f', {
     host: 'us-cdbr-azure-west-a.cloudapp.net'
   });
@@ -22,6 +25,10 @@ var Sequelize = require('Sequelize');
     answer: Sequelize.STRING,
     difficulty: Sequelize.INTEGER
   });
+
+
+Category.hasMany(Question);
+Question.hasMany(Category);
 
 
 /******************CAUTION*********************
@@ -72,7 +79,6 @@ var queryDb = {
   getQuestions : function(callback, query){
     modelQuery(Question, callback, query);
   }, 
-
   getCategories : function(callback, query){
     modelQuery(Category, callback, query);
   }
@@ -150,9 +156,9 @@ var updateDb = {
 *********************************************************************/
 
 //Make objects available externally
-exports.User = User;
-exports.Category = Category;
-exports.Question = Question;
+// exports.User = User;
+// exports.Category = Category;
+// exports.Question = Question;
 
 exports.queryDb = queryDb;
 exports.updateDb = updateDb;
@@ -164,6 +170,10 @@ queryDb.getCategories(function(data){
   console.log(data);
 });
 
+
+}; //TEMP DB
+
+//tempDB();
 
 
 
