@@ -12,9 +12,9 @@ angular.module('copperBobcat.questions', [])
   var questions = {};
   //Line break in questions is to fix uneven indenting in the pre tag
   //This is a hack ans should be removed eventually.
-  questions.list = [{question:"\nfunction add(a, b) {\n return a + b \n} \nadd(12, 3)", answer: '15'},
-                    {question:"\nfunction subtract(a, b) {\n return a - b \n} \nsubtract(12, 3)", answer: '9'},
-                    {question:"\nfunction divide(a, b) {\n return a / b \n} \ndivide(12, 3)", answer: '4'}];
+  // questions.list = [{question:"\nfunction add(a, b) {\n return a + b \n} \nadd(12, 3)", answer: '15'},
+  //                   {question:"\nfunction subtract(a, b) {\n return a - b \n} \nsubtract(12, 3)", answer: '9'},
+  //                   {question:"\nfunction divide(a, b) {\n return a / b \n} \ndivide(12, 3)", answer: '4'}];
   questions.index = 0;
   questions.isAnswered = false;
   
@@ -27,7 +27,7 @@ angular.module('copperBobcat.questions', [])
     }
   };
 
-  questions.getQuestions = function() {
+  var getQuestions = function() {
     return $http({
       method: 'GET',
       url: '/questions'
@@ -38,7 +38,8 @@ angular.module('copperBobcat.questions', [])
   };
 
   return {
-    questions: questions
+    questions: questions,
+    getQuestions: getQuestions
   };
 
 });
