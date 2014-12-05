@@ -31,9 +31,8 @@ passport.use(new GithubStrategy(
   }
 ));
 
-
-
-app.use("/questions", router);
+/*future modularizing*/
+// app.use("/questions", router);
 
 // authentication middleware
 app.use(session({ secret: 'my_precious' }));
@@ -43,7 +42,19 @@ app.use(passport.session());
 // authentication routes
 app.get('/account', ensureAuthenticated, function(req, res){
   console.log('authenticated');
-  res.json({ user: req.user });
+  db.createUser({username: req.user.username});
+  db.model.User.find({where: {username:req.user.username}}).fetch().success(function(user) {
+      if(user) {
+        req.session.regenerate(function() {
+          req.session.user = req.user;
+          res.redirect('/');
+        });
+      }
+      else {
+        res.redirect('/account');
+      }
+  });
+  // res.json({ user: req.user });
 });
 app.get('/auth/github',
   passport.authenticate('github'),
@@ -57,6 +68,9 @@ app.get('/auth/github/callback',
   }
 );
 app.get('/logout', function(req, res){
+  req.session.destroy(function() {
+      res.redirect('/account');
+  });
   req.logout();
   res.redirect('/');
 });
@@ -67,6 +81,16 @@ function ensureAuthenticated(req, res, next) {
   console.log('not authenticated!');
   res.redirect('/');
 }
+
+//handling requests and DB queries
+
+app.get('/api/questions', ensureAuthenticated, function(req, res) {
+  var id = req.user && req.user.id; 
+  db.getQuestions(id)
+    .success(function(err, results){
+      res.json(results);
+    });
+});
 
 // REMOVE ME!------------------------
 // hard-coded server response with dummy data
