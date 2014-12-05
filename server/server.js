@@ -26,7 +26,6 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-<<<<<<< HEAD
 
 // authentication middleware
 app.use(session({ secret: 'my_precious' }));
@@ -64,10 +63,5 @@ function ensureAuthenticated(req, res, next) {
 // start server
 var port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '../../public'));
-=======
->>>>>>> 9bb3d5397c88c694130054462a12154e74962572
-
-var port = process.env.PORT || 3000;
-app.use(express.static('./public'));
 
 app.listen(port);
