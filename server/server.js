@@ -5,6 +5,9 @@ var config = require('./oauth.js');
 var session = require('express-session');
 var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
+var router = require('./routes.js');
+var config = require('./oauth.js');
+var passport = require('passport');
 
 // serialize and deserialize
 passport.serializeUser(function(user, done) {
@@ -26,12 +29,8 @@ passport.use(new GithubStrategy(
     });
   }
 ));
-// var db = require('./db');
-var app = express();
-var router = require('./routes.js');
-var config = require('./oauth.js')
-var passport = require('passport')
-var GoogleStrategy = require('passport-google').Strategy;
+
+
 
 app.use("/questions", router);
 
