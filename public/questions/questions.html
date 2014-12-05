@@ -1,4 +1,4 @@
-<div id='container' ng-controller='QuestionsController' ng-click="questions.tap()"> 
+<div id='container' class='noselect' ng-controller='QuestionsController' ng-click="questions.tap()"> 
   <pre id='code' ng-if="!questions.isAnswered">
     <code>
       <span class='fontSize' hljs source="questions.list[questions.index].question">
