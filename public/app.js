@@ -22,7 +22,11 @@ function($stateProvider, $urlRouterProvider) {
       .state('login', {
         url: '/login',
         templateUrl: '/login/login.html'
-      });
+      }).state('admin', {
+        url: '/admin', 
+        templateUrl: '/admin/admin.html'
+      })
+
 });
 
 
