@@ -1,12 +1,8 @@
-<div id='container' class='noselect' ng-controller='QuestionsController' ng-click="questions.tap()"> 
-  <pre id='code' ng-if="!questions.isAnswered">
-    <code>
-      <span class='fontSize' hljs source="serverQuestions[questions.index].question">
-      	
-  	  </span>
-    </code>    
-  </pre>
+
+<md-card id='container' class='noselect' ng-controller='QuestionsController' ng-click="questions.tap()"> 
+  <span id='code' ng-if="!questions.isAnswered" class='fontSize' hljs source="serverQuestions[questions.index].question">
+  </span>
   <h1 id='answer' class='fontSize' ng-if="questions.isAnswered">
       {{serverQuestions[questions.index].answer}}
    </h1>
-</div>
+</md-card>
