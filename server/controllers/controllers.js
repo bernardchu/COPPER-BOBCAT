@@ -5,6 +5,14 @@ module.exports = {
   messages: {
     get: function (req, res) {
       db.Message.findAll({include: [db.User]})
+var db = require('../db/indexDB.js');
+// var bluebird = require('bluebird');
+
+
+module.exports = {
+  questions: {
+    get: function (req, res) {
+      db.Question.findAll({include: [db.User]})
         .complete(function(err, results){
           // optional mapping step
           res.json(results);
@@ -22,6 +30,16 @@ module.exports = {
           });
         });
     }
+    // post: function (req, res) {
+    //   db.User.findOrCreate({where: {username: req.body.username}})
+    //     .complete(function(err, results){
+    //       db.Question.create({
+           
+    //       }).complete(function(err, results){
+    //         res.sendStatus(201);
+    //       });
+    //     });
+    // }
   },
 
   users: {
@@ -39,4 +57,5 @@ module.exports = {
       });
     }
   }
+};
 };

@@ -1,10 +1,10 @@
 var Sequelize = require('Sequelize');
 
 var sequelize = new Sequelize('copperdb', 'bcb996835c867c', 'ad7bf91f', {
-  host: 'us-cdbr-azure-west-a.cloudapp.net'
+  logging: console.log
 });
-
-
+var sequelize = new Sequelize('copperdb', 'bcb996835c867c', 'ad7bf91f');
+var sequelize = new Sequelize('CB', 'root', '');
 
 var User = sequelize.define('user', {
   username: Sequelize.STRING
@@ -20,31 +20,13 @@ var Question = sequelize.define('question', {
   difficulty: Sequelize.INTEGER
 });
 
-User.hasMany(Question);
-Category.hasMany(Question);
+User.hasMany(Question, { as: 'User_Question', foreignKey: 'question_Id' });
+Category.hasMany(Question, { as: 'Category_Question', foreignKey: 'question_Id' });
 
-
-//Create tables if not exist 
-User.sync().then(function(){
-  console.log("Created User");
-});
-Category.sync().then(function(){
-  console.log("Created Category");
-});
-Question.sync().then(function(){
-  console.log("Created Question");
-});
+User.sync();
+Category.sync();
+Question.sync();
 
 exports.User = User;
 exports.Category = Category;
 exports.Question = Question;
-
-/************************************ CAUTION ************************************/
-/* Do this with everything else commented out to drop all tables 
-* sequelize.sync({force: true}).then(function(){
-*   console.log("successfully synced");
-* }, function(){
-*   console.log("failed to sync");
-* });
-*/
-
