@@ -42,18 +42,18 @@ app.use(passport.session());
 // authentication routes
 app.get('/account', ensureAuthenticated, function(req, res){
   console.log('authenticated');
-  db.createUser({username: req.user.username});
-  db.model.User.find({where: {username:req.user.username}}).fetch().success(function(user) {
-      if(user) {
-        req.session.regenerate(function() {
-          req.session.user = req.user;
-          res.redirect('/');
-        });
-      }
-      else {
-        res.redirect('/account');
-      }
-  });
+  
+  db.queryDb.getUsers(function (user) {
+    if(!user) {
+      db.updateDb.addUser({username: req.user.username, displayName: req.user.displayName, gitId: req.user.id});
+    }
+    console.log(user);
+    req.session.regenerate(function() {
+      req.session.user = req.user;
+    });
+    res.redirect('/');
+  }
+  , {where: {gitId: req.user.id}});
   // res.json({ user: req.user });
 });
 app.get('/auth/github',
@@ -84,12 +84,16 @@ function ensureAuthenticated(req, res, next) {
 
 //handling requests and DB queries
 
-app.get('/api/questions', ensureAuthenticated, function(req, res) {
-  var id = req.user && req.user.id; 
-  db.getQuestions(id)
-    .success(function(err, results){
-      res.json(results);
-    });
+app.get('/questions', ensureAuthenticated, function(req, res) {
+  // var id = req.user && req.user.id;
+
+  db.queryDb.getQuestions(function(data) {
+    if(data) {
+      console.log(data);
+      res.json(data);
+    }
+  }) //add in id later
+  
 });
 
 // REMOVE ME!------------------------
@@ -99,9 +103,9 @@ var dummyData = [
   {question:"\nfunction subtract(a, b) {\n return a - b \n} \nsubtract(12, 3)", answer: '9'},
   {question:"\nfunction divide(a, b) {\n return a / b \n} \ndivide(12, 3)", answer: '4'}
 ];
-app.get('/questions', function(req, res) {
-  res.json(dummyData);
-});
+// app.get('/questions', function(req, res) {
+//   res.json(dummyData);
+// });
 
 // start server
 var port = process.env.PORT || 3000;
