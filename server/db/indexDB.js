@@ -86,7 +86,7 @@ var queryDb = {
 
 
 /********************************************************************
-* Database Querying Functions Creating and Modifying Data
+* Database Querying Functions For Creating and Modifying Data
 * Each function takes arguments to add or modify on the database
 * Errors or Success will be logged in the node console
 *********************************************************************/
@@ -150,29 +150,13 @@ var updateDb = {
 };
 
 
-
 /********************************************************************
 * Export items for use in app
 *********************************************************************/
-
-//Make objects available externally
-// exports.User = User;
-// exports.Category = Category;
-// exports.Question = Question;
-
 exports.queryDb = queryDb;
 exports.updateDb = updateDb;
-
-
-// updateDb.addQuestion('test Question', "answer", "5");
-  // queryDb.getCategories(function(data){
-  //   console.log(data);
-  // });
-
 
 }; //TEMP DB
 
 tempDB();
-
-
 
