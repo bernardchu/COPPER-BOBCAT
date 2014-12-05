@@ -1,9 +1,13 @@
 angular.module('copperBobcat.questions', [])
 .controller('QuestionsController', function ($scope, Questions, $http) {
-
   angular.extend($scope, Questions);
 
-}).factory('Questions', function() {
+  Questions.getQuestions()
+    .then(function(questions) {
+      $scope.serverQuestions = questions;
+    });
+
+}).factory('Questions', function($http) {
   //Linked list?
   var questions = {};
   //Line break in questions is to fix uneven indenting in the pre tag
@@ -21,6 +25,16 @@ angular.module('copperBobcat.questions', [])
     } else {
       questions.isAnswered = true;
     }
+  };
+
+  questions.getQuestions = function() {
+    return $http({
+      method: 'GET',
+      url: '/questions'
+    })
+    .then(function(res){
+      return res.data;
+    });
   };
 
   return {

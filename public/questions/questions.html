@@ -1,12 +1,12 @@
 <div id='container' class='noselect' ng-controller='QuestionsController' ng-click="questions.tap()"> 
   <pre id='code' ng-if="!questions.isAnswered">
     <code>
-      <span class='fontSize' hljs source="questions.list[questions.index].question">
+      <span class='fontSize' hljs source="serverQuestions[questions.index].question">
       	
   	  </span>
     </code>    
   </pre>
   <h1 id='answer' class='fontSize' ng-if="questions.isAnswered">
-      {{questions.list[questions.index].answer}}
+      {{serverQuestions[questions.index].answer}}
    </h1>
 </div>
