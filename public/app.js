@@ -14,4 +14,7 @@ function($stateProvider, $urlRouterProvider) {
         templateUrl: '/questions/questions.html',
         controller: 'QuestionsController'
       })
-  });
+});
+
+
+//random name.
