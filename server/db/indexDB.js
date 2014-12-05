@@ -1,6 +1,8 @@
 var Sequelize = require('Sequelize');
 
-var sequelize = new Sequelize('copperdb', 'bcb996835c867c', 'ad7bf91f');
+var sequelize = new Sequelize('copperdb', 'bcb996835c867c', 'ad7bf91f', {
+  logging: console.log
+});
 
 var User = sequelize.define('user', {
   username: Sequelize.STRING
