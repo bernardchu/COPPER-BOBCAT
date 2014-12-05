@@ -27,7 +27,6 @@ passport.use(new GithubStrategy(
   }
 ));
 
-
 // authentication middleware
 app.use(session({ secret: 'my_precious' }));
 app.use(passport.initialize());
@@ -63,6 +62,6 @@ function ensureAuthenticated(req, res, next) {
 
 // start server
 var port = process.env.PORT || 3000;
-app.use(express.static(__dirname + '../../public'));
+app.use(express.static('./public'));
 
 app.listen(port);
