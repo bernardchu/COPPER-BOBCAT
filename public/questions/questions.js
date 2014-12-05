@@ -1,9 +1,13 @@
 angular.module('copperBobcat.questions', [])
 .controller('QuestionsController', function ($scope, Questions, $http) {
-
   angular.extend($scope, Questions);
 
-}).factory('Questions', function() {
+  Questions.getQuestions()
+    .then(function(questions) {
+      $scope.serverQuestions = questions;
+    });
+
+}).factory('Questions', function($http) {
   //Linked list?
   var questions = {};
   questions.list = [{question:"\nfunction add(a, b) {\n return a + b \n} \nadd(12, 3)", answer: '15'},
@@ -19,6 +23,16 @@ angular.module('copperBobcat.questions', [])
     } else {
       questions.isAnswered = true;
     }
+  };
+
+  questions.getQuestions = function() {
+    return $http({
+      method: 'GET',
+      url: '/questions'
+    })
+    .then(function(res){
+      return res.data;
+    });
   };
 
   return {
