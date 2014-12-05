@@ -21,10 +21,12 @@ var Question = sequelize.define('question', {
 User.hasMany(Question);
 Category.hasMany(Question);
 
-User.sync();
-Category.sync();
-Question.sync();
+// User.sync();
+// Category.sync();
+// Question.sync();
 
-exports.User = User;
-exports.Category = Category;
-exports.Question = Question;
+sequelize.sync({force: true});
+
+// exports.User = User;
+// exports.Category = Category;
+// exports.Question = Question;
