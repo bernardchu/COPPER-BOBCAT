@@ -1,4 +1,8 @@
 var Sequelize = require('Sequelize');
+<<<<<<< HEAD
+=======
+
+>>>>>>> c29a2ac3543e8c1ba10b5657f32c209d5ff03ce3
 var sequelize = new Sequelize('copperdb', 'bcb996835c867c');
 
 var User = sequelize.define('user', {
