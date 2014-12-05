@@ -2,7 +2,8 @@ var bobcatApp = angular.module('copperBobcat', [
   'ui.router',
   'copperBobcat.questions',
   'hljs',
-  'ngTouch'
+  'ngTouch',
+  'ngMaterial'
 ]);
 
 bobcatApp.config(
