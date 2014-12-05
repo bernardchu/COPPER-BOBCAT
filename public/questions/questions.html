@@ -1,5 +1,5 @@
 
-<md-card id='container' class='noselect' ng-controller='QuestionsController' ng-click="tap()"> 
+<md-card id='container' class='noselect' ng-controller='QuestionsController' ng-click="tap()" ng-swipe-left="tap()">
   <span id='code' ng-if="!questions.isAnswered" class='fontSize' hljs source="serverQuestions[questions.index].question">
   </span>
   <h1 id='answer' class='center' ng-if="questions.isAnswered">
