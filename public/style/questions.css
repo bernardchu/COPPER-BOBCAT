@@ -1,12 +1,40 @@
-#container {
-	height: 100%;
-	width: 70%;
-    margin: 0 auto;
-    text-align: middle;
+
+/*-------------------------------------------- END OF RESET --------------------------------------------*/
+
+body {
+    font-size: 16px;
 }
 
-#code {
-	/*text-align: center;*/
+#container {
+  height: 80%;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+}
+
+#code {	
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+pre {
+    
+ white-space: pre-wrap;       
+ white-space: -moz-pre-wrap;  
+ white-space: -pre-wrap;      
+ white-space: -o-pre-wrap;    
+ word-wrap: break-word;       
+ margin: 0px;
 }
 
 .hljs {
@@ -27,5 +55,10 @@
 }
 
 #answer {
-	text-align: center;
+    text-align: center;
+    margin: 2em;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
