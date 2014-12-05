@@ -7,7 +7,7 @@ body {
 
 #container {
   height: 80%;
-  width: 80%;
+  width: 90%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -24,7 +24,6 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 pre {
@@ -51,14 +50,87 @@ pre {
 }
 
 .fontSize {
-	font-size: 3em;
+	font-size: 1.5em;
 }
 
 #answer {
+    font-size: 3em;   
     text-align: center;
     margin: 2em;
     width: 80%;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+    .fontSize {
+        font-size: 1em;
+    }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+    .fontSize {
+        font-size: 1em;
+    }
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+    .fontSize {
+        font-size: 1em;
+    }
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .fontSize {
+        font-size: 2em;
+    }
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    .fontSize {
+        font-size: 1em;
+    }
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    .fontSize {
+        font-size: 1em;
+    }
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+    .fontSize {
+        font-size: 2em;
+    }
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+    .fontSize {
+        font-size: 2em;
+    }
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@mediaonly screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+    .fontSize {
+        font-size: 1em;
+    }
+/* Styles */
 }

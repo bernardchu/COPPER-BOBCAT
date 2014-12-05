@@ -1,5 +1,5 @@
 angular.module('copperBobcat.questions', [])
-.controller('QuestionsController', function ($scope, Questions, $http) {
+.controller('QuestionsController', function ($scope, Questions, $http, $state) {
   angular.extend($scope, Questions);
 
   Questions.getQuestions()
@@ -7,6 +7,17 @@ angular.module('copperBobcat.questions', [])
       $scope.serverQuestions = questions;
     });
 
+  $scope.tap = function(){
+    if($scope.questions.isAnswered) {
+      $scope.questions.isAnswered = false;
+      $scope.questions.index += 1;
+      if ($scope.questions.index >= $scope.serverQuestions.length) {
+        $state.go('finished');
+      }
+    } else {
+      $scope.questions.isAnswered = true;
+    }
+  };
 }).factory('Questions', function($http) {
   //Linked list?
   var questions = {};
@@ -18,14 +29,6 @@ angular.module('copperBobcat.questions', [])
   questions.index = 0;
   questions.isAnswered = false;
   
-  questions.tap = function(){
-    if(questions.isAnswered) {
-      questions.isAnswered = false;
-      questions.index += 1;
-    } else {
-      questions.isAnswered = true;
-    }
-  };
 
   var getQuestions = function() {
     return $http({
