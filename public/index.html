@@ -17,8 +17,12 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <span><a href="/auth/github"> Login via Github </a></span><br/>
-    <span><a href="/logout"> Logout </a></span>
+    <md-toolbar class='md-theme-light'>
+      <h1  class="md-toolbar-tools">
+        <span><a href="/auth/github"> Login via Github </a></span><br/>
+        <span><a href="/logout"> Logout </a></span>  
+      </h1>
+    </md-toolbar>
     <div ui-view>
     </div>
   </body>
