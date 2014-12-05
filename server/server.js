@@ -68,11 +68,10 @@ app.get('/auth/github/callback',
   }
 );
 app.get('/logout', function(req, res){
+  console.log(req.session);
   req.session.destroy(function() {
-      res.redirect('/account');
+      res.redirect('/');
   });
-  req.logout();
-  res.redirect('/');
 });
 
 // helper function to test authentication
