@@ -86,7 +86,7 @@ var queryDb = {
 
 
 /********************************************************************
-* Database Querying Functions Creating and Modifying Data
+* Database Querying Functions For Creating and Modifying Data
 * Each function takes arguments to add or modify on the database
 * Errors or Success will be logged in the node console
 *********************************************************************/
@@ -173,6 +173,4 @@ exports.updateDb = updateDb;
 }; //TEMP DB
 
 tempDB();
-
-
 
