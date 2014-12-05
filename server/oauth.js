@@ -1,7 +1,7 @@
 var ids = {
   google: {
-   returnURL: 'http://cb-stage.azurewebsites.net/auth/google/callback',
-   realm: 'http://cb-stage.azurewebsites.net'
+   returnURL: 'http://copperbob.azurewebsites.net/auth/google/callback',
+   realm: 'http://copperbob.azurewebsites.net'
   }
 };
 module.exports = ids;
