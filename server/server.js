@@ -26,6 +26,14 @@ passport.use(new GithubStrategy(
     });
   }
 ));
+// var db = require('./db');
+var app = express();
+var router = require('./routes.js');
+var config = require('./oauth.js')
+var passport = require('passport')
+var GoogleStrategy = require('passport-google').Strategy;
+
+app.use("/questions", router);
 
 // authentication middleware
 app.use(session({ secret: 'my_precious' }));
