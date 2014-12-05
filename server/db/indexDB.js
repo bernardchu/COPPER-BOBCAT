@@ -1,7 +1,7 @@
 var Sequelize = require('Sequelize');
 
 var sequelize = new Sequelize('copperdb', 'bcb996835c867c', 'ad7bf91f', {
-  logging: console.log
+  host: 'us-cdbr-azure-west-a.cloudapp.net'
 });
 
 var User = sequelize.define('user', {
