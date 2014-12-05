@@ -23,9 +23,27 @@ var Question = sequelize.define('question', {
 User.hasMany(Question, { as: 'User_Question', foreignKey: 'question_Id' });
 Category.hasMany(Question, { as: 'Category_Question', foreignKey: 'question_Id' });
 
-User.sync();
-Category.sync();
-Question.sync();
+// var newQueston = Question.build({
+//   question: 'Rick',
+//   answer: , 
+//   difficulty: ''
+// });
+
+// newQueston.save().success(function() {
+//   console.log('Question Added');
+// });
+
+//Create tables if not exist 
+User.sync().then(function(){
+  console.log("Created User");
+});
+Category.sync().then(function(){
+  console.log("Created Category");
+});
+Question.sync().then(function(){
+  console.log("Created Question");
+});
+>>>>>>> writing db setup
 
 exports.User = User;
 exports.Category = Category;
