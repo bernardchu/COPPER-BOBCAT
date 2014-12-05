@@ -60,6 +60,17 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/');
 }
 
+// REMOVE ME!------------------------
+// hard-coded server response with dummy data
+var dummyData = [
+  {question:"\nfunction add(a, b) {\n return a + b \n} \nadd(12, 3)", answer: '15'},
+  {question:"\nfunction subtract(a, b) {\n return a - b \n} \nsubtract(12, 3)", answer: '9'},
+  {question:"\nfunction divide(a, b) {\n return a / b \n} \ndivide(12, 3)", answer: '4'}
+];
+app.get('/questions', function(req, res) {
+  res.json(dummyData);
+});
+
 // start server
 var port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '../../public'));
