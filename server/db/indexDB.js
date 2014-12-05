@@ -164,16 +164,15 @@ exports.queryDb = queryDb;
 exports.updateDb = updateDb;
 
 
-updateDb.addCategory('test Category');
-
-queryDb.getCategories(function(data){
-  console.log(data);
-});
+// updateDb.addQuestion('test Question', "answer", "5");
+  // queryDb.getCategories(function(data){
+  //   console.log(data);
+  // });
 
 
 }; //TEMP DB
 
-//tempDB();
+tempDB();
 
 
 
