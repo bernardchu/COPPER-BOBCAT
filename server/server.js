@@ -9,7 +9,7 @@ var router = require('./routes.js');
 var config = require('./oauth.js');
 var passport = require('passport');
 
-// serialize and deserialize
+// passport boilerplate code - serialize and deserialize allows user data to be stored in a session.
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -17,6 +17,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+// passport boilerplate code - define behavior for each Oauth provider.
 passport.use(new GithubStrategy(
   {
     clientID: config.github.clientID,
@@ -60,7 +61,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-// test authentication
+// helper function to test authentication
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   console.log('not authenticated!');
