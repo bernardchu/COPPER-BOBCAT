@@ -26,7 +26,6 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-
 // authentication middleware
 app.use(session({ secret: 'my_precious' }));
 app.use(passport.initialize());
