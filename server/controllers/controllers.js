@@ -1,9 +1,3 @@
-var db = require('../db');
-
-module.exports = {
-  messages: {
-    get: function (req, res) {
-      db.Message.findAll({include: [db.User]})
 var db = require('../db/indexDB.js');
 // var bluebird = require('bluebird');
 
@@ -17,28 +11,19 @@ module.exports = {
           res.json(results);
         });
     },
-    post: function (req, res) {
-      db.User.findOrCreate({where: {username: req.body.username}})
-        .complete(function(err, results){
-          db.Message.create({
-            userid: results[0].dataValues.id,
-            text: req.body.message,
-            roomname: req.body.roomname
-          }).complete(function(err, results){
-            res.sendStatus(201);
-          });
-        });
-    }
     // post: function (req, res) {
     //   db.User.findOrCreate({where: {username: req.body.username}})
     //     .complete(function(err, results){
-    //       db.Question.create({
-           
+    //       db.Message.create({
+    //         userid: results[0].dataValues.id,
+    //         text: req.body.message,
+    //         roomname: req.body.roomname
     //       }).complete(function(err, results){
     //         res.sendStatus(201);
     //       });
     //     });
     // }
+   
   },
 
   users: {
