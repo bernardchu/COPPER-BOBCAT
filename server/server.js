@@ -78,7 +78,6 @@ app.get('/logout', function(req, res){
 
 app.get('/questions', ensureAuthenticated, function(req, res) {
 
-  // var id = req.user && req.user.id;
   db.queryDb.getQuestions(function(data) {
     if(data) {
       console.log(data);
