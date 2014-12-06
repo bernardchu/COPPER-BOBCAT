@@ -3,8 +3,13 @@ angular.module('copperBobcat.questions', [])
   angular.extend($scope, Questions);
 
   Questions.getQuestions()
-    .then(function(questions) {
-      $scope.serverQuestions = questions;
+    .then(function(res) {
+      if (res === 'Forbidden') {
+        $state.go('login');
+      }
+      else {
+        $scope.serverQuestions = res; 
+      }
     });
 
   $scope.tap = function(){

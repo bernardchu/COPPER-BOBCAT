@@ -78,14 +78,15 @@ app.get('/logout', function(req, res){
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   console.log('not authenticated!');
-  res.redirect('/');
+  // res.redirect('/#/login');
+  res.send('Forbidden');
 }
 
 //handling requests and DB queries
 
 app.get('/questions', ensureAuthenticated, function(req, res) {
+// app.get('/questions', function(req, res) {
   // var id = req.user && req.user.id;
-
   db.queryDb.getQuestions(function(data) {
     if(data) {
       console.log(data);
