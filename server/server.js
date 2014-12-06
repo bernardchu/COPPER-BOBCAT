@@ -1,14 +1,12 @@
 var express = require('express');
 var db = require('./db/indexDB.js');
-var app = express();
-var config = require('./oauth.js');
 var session = require('express-session');
+var config = require('./auth/oauth.js');
+var ensureAuthenticated = require('./auth/ensureAuthenticated.js')
 var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
 var router = require('./routes.js');
-var config = require('./oauth.js');
-var passport = require('passport');
-
+var app = express();
 // passport boilerplate code - serialize and deserialize allows user data to be stored in a session.
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -74,13 +72,7 @@ app.get('/logout', function(req, res){
   });
 });
 
-// helper function to test authentication
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  console.log('not authenticated!');
-  // res.redirect('/#/login');
-  res.send('Forbidden');
-}
+
 
 //handling requests and DB queries
 
@@ -112,3 +104,4 @@ var port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '../../public'));
 
 app.listen(port);
+module.exports = app;
