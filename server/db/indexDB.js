@@ -156,19 +156,6 @@ var updateDb = {
 exports.queryDb = queryDb;
 exports.updateDb = updateDb;
 
-updateDb.addQuestion("\nfunction doSomething0(a, b) {\n return a.val + b.val \n} \ndoSomething({val: '3'}, {});"
-  , '3undefined', "2");
-
-updateDb.addQuestion("\nfunction doSomething1(a, b) {\n return a.val - b \n} \ndoSomething1({val: 3}, []);"
-  , 3, "1");
-
-updateDb.addQuestion("\nfunction doSomething2(obj) {\n obj.someProperty = 10; \n} \nvar obj = {};\ndoSomething2(obj);\n console.log(obj.someProperty);"
-  , '4', "2");
-
-updateDb.addQuestion("\nfunction doSomething3(x) {\n x = 'use aws'; \n} \nvar x = 'use azure';\ndoSomething3(x);\n console.log(x);"
-  , 'use azure', "1");
-
-
 
 }; //TEMP DB
 

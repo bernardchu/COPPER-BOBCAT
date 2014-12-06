@@ -3,7 +3,8 @@ var bobcatApp = angular.module('copperBobcat', [
   'copperBobcat.questions',
   'hljs',
   'ngTouch',
-  'ngMaterial'
+  'ngMaterial',
+  'datatables'
 ]);
 
 bobcatApp.config(
@@ -22,7 +23,12 @@ function($stateProvider, $urlRouterProvider) {
       .state('login', {
         url: '/login',
         templateUrl: '/login/login.html'
-      });
+      }).state('admin', {
+        url: '/admin', 
+        templateUrl: '/admin/admin.html',
+        controller: 'AdminController'
+      })
+
 });
 
 
