@@ -2,6 +2,8 @@ angular.module('copperBobcat.questions', [])
 .controller('QuestionsController', function ($scope, Questions, $http, $state) {
   angular.extend($scope, Questions);
 
+  console.log($scope);
+
   Questions.getQuestions()
     .then(function(res) {
       if (res === 'Forbidden') {
@@ -12,7 +14,10 @@ angular.module('copperBobcat.questions', [])
       }
     });
 
+  $scope.answerDisplay = '';
+
   $scope.tap = function(){
+
     if($scope.questions.isAnswered) {
       $scope.questions.isAnswered = false;
       $scope.questions.index += 1;
@@ -20,6 +25,13 @@ angular.module('copperBobcat.questions', [])
         $state.go('finished');
       }
     } else {
+      $scope.answerDisplay = 'The answer is: ' + $scope.serverQuestions[$scope.questions.index].answer;
+      if($scope.userAnswer === $scope.serverQuestions[$scope.questions.index].toString()) {
+        $scope.answerDisplay += ' you got it RIGHT!';
+      } else {
+        $scope.answerDisplay += ' you got it WRONG!';
+      }
+      $scope.userAnswer = '';
       $scope.questions.isAnswered = true;
     }
   };

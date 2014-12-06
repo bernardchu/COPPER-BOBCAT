@@ -40,6 +40,7 @@ app.use(session({ secret: 'my_precious' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use('/api/questions', questionRouter); 
 app.use('/auth', authRouter); 
 app.use('/api/account', accountRouter);
