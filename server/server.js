@@ -75,7 +75,6 @@ app.get('/logout', function(req, res){
 
 
 //handling requests and DB queries
-
 app.get('/questions', ensureAuthenticated, function(req, res) {
 
   db.queryDb.getQuestions(function(data) {
