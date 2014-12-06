@@ -16,8 +16,12 @@ function($stateProvider, $urlRouterProvider) {
         controller: 'QuestionsController'
       })
       .state('finished', {
-        url: '/questions/finished',
+        url: '/finished',
         templateUrl: '/questions/finished.html'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: '/login/login.html'
       });
 });
 
