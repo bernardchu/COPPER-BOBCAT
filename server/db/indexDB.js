@@ -169,6 +169,7 @@ updateDb.addQuestion("\nfunction doSomething3(x) {\n x = 'use aws'; \n} \nvar x 
   , 'use azure', "1");
 
 
+
 }; //TEMP DB
 
 tempDB();
