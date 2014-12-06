@@ -1,4 +1,4 @@
-angular.module('copperBobcat.questions', [])
+angular.module('copperBobcat.admin', [])
 .controller('AdminController', function ($scope, Admin, $http, $state) {
   angular.extend($scope, Admin);
 
