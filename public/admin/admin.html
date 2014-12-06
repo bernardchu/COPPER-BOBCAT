@@ -1,4 +1,26 @@
+<md-card id='container' class='noselect' >
 
-  <h1 id='answer' class='center' ng-if="questions.isAnswered">
-     HI THERE
-   </h1>
+ 
+
+    <table class="questions-table" ng-controller='AdminController' >
+      <thead>
+        <th>ID</th>
+        <th>Question</th>
+        <th>Answer</th>
+        <th>Difficulty</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="question in adminData" >
+          <td>{{question.id}}</td>
+          <td>{{question.question}}</td>
+          <td>{{question.answer}}</td>
+          <td>{{question.difficulty}}</td>
+          <td>{{question.createdAt}}</td>
+          <td>{{question.updatedAt}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+</md-card>
