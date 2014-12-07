@@ -1,10 +1,11 @@
 var bobcatApp = angular.module('copperBobcat', [
   'ui.router',
   'copperBobcat.questions',
+  'copperBobcat.admin',
   'hljs',
   'ngTouch',
   'ngMaterial',
-  'datatables'
+  'datatables',
   'mobile-angular-ui', 
   'mobile-angular-ui.gestures'
 ]);

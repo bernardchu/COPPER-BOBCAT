@@ -1,7 +1,21 @@
 
 <!-- Potential Swiping Functionality (caused errors on Iphone 6) ng-swipe-left="tap()" -->
 <md-card id='container' ng-controller='QuestionsController' ng-click="tap()">
-  <div class="carousel-item" hljs class='fontSize' hljs source="serverQuestions[questions.index].question">
+  <div class="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item" hljs class='fontSize' hljs source="serverQuestions[0].question">
+      </div>
+      <div class="carousel-item" hljs class='fontSize' hljs source="serverQuestions[1].question">
+      </div>
+      <div class="carousel-item" hljs class='fontSize' hljs source="serverQuestions[2].question">
+      </div>
+      <div class="carousel-item" hljs class='fontSize' hljs source="serverQuestions[3].question">
+      </div>
+      <div class="carousel-item" hljs class='fontSize' hljs source="serverQuestions[4].question">
+      </div>
+      <div class="carousel-item" hljs class='fontSize' hljs source="serverQuestions[5].question">
+      </div>
+    </div>
   </div>
 <!--   <span id='code' ng-if="!questions.isAnswered" class='fontSize' hljs source="serverQuestions[questions.index].question">
   </span>
