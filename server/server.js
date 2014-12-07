@@ -76,7 +76,7 @@ app.use(passport.session());
 // );
 
 app.use('/api/questions', questionRouter); 
-app.use('/api/auth', authRouter); 
+app.use('/auth', authRouter); 
 app.use('/api/account', accountRouter);
 
 require('./questions/questionRoutes.js')(questionRouter);
