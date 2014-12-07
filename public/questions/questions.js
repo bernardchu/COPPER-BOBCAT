@@ -38,7 +38,7 @@ angular.module('copperBobcat.questions', [])
   var getQuestions = function() {
     return $http({
       method: 'GET',
-      url: '/questions'
+      url: '/api/questions/'
     })
     .then(function(res){
       return res.data;
