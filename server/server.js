@@ -86,7 +86,7 @@ require('./account/accountRoutes.js')(accountRouter);
 
 //handling requests and DB queries
 //ensureAuthenticated, 
-app.get('/questions', ensureAuthenticated, function(req, res) {
+// app.get('/questions', ensureAuthenticated, function(req, res) {
 
 // //handling requests and DB queries
 // app.get('/questions', ensureAuthenticated, function(req, res) {
