@@ -1,7 +1,6 @@
 angular.module('copperBobcat.questions', [])
-.controller('QuestionsController', function ($scope, Questions, $http, $state) {
+.controller('QuestionsController', function ($scope, Questions, $http, $state, $mdDialog) {
   angular.extend($scope, Questions);
-
   Questions.getQuestions()
     .then(function(res) {
       if (res === 'Forbidden') {
@@ -12,8 +11,33 @@ angular.module('copperBobcat.questions', [])
       }
     });
 
+  $scope.alert = '';
   $scope.answerDisplay = '';
   $scope.userAnswer = '';
+
+  $scope.showAlert = function(ev, userAnswer) {
+    $scope.answerDisplay = 'The answer is: ' + $scope.serverQuestions[$scope.questions.index].answer;
+      
+    if(userAnswer === $scope.serverQuestions[$scope.questions.index].answer.toString()) {
+      $scope.answerDisplay += ' you got it RIGHT!';
+    } else {
+      $scope.answerDisplay += ' you got it WRONG!';
+    }
+
+    $scope.userAnswer = '';
+    $scope.questions.isAnswered = true;
+
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('This is an alert title')
+        .content($scope.answerDisplay)
+        .ok('Next Question')
+        .targetEvent(ev)
+
+    ).then(function(){
+      $scope.questions.isAnswered = false;     
+    });
+  };
 
   $scope.flip = function(dir){
     if(dir === 'left') {
