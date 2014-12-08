@@ -1,6 +1,8 @@
-// Stores Oauth ID and secret information for whatever sites you want to use for authenticaion.
-// The callbackURL is given to each site when registering, so it's not recommended you change it without changing info on the provider as well.
-// The provider will redirect users to the callbackURL once authenticated, so there should be a route on the server corresponding to each one.
+/**
+  * Stores Oauth ID and secret information for whatever sites you want to use for authentication.
+  * The callbackURL is given to each site when registering, so it's not recommended you change it without changing info on the provider as well.
+  * The provider will redirect users to the callbackURL once authenticated, so there should be a route on the server corresponding to each one.
+  */
 var ids = {
   github: {
     clientID: '3471681cd2d2d08808e9',
