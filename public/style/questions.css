@@ -10,6 +10,10 @@ body {
   margin-top: 6.25em;
 }
 
+input {
+    width: 40%;
+}
+
 #landing a{
  text-decoration: none;
  color:white;
@@ -36,11 +40,11 @@ body {
 }
 
 #arrow-right {
-    margin-left: 1em;
+    margin-left: 1.5em;
 }
 
 #arrow-left {
-    margin-right: 1em;
+    margin-right: 1.5em;
 }
 
 /* From: http://css-tricks.com/snippets/css/fixed-footer/ */
