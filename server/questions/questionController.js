@@ -14,12 +14,16 @@ module.exports = {
 	}, 
 
   addQuestion : function(req, res){
-    db.updateDb.addQuestion(req.body.text, req.body.answer, req.body.difficulty);
+    db.updateDb.addQuestion(req.body.text, req.body.answer, req.body.difficulty, function(){
+      //send response
+      res.send(201);
+    });
   },
 
   deleteQuestion : function(req, res){
-    db.updateDb.deleteById(req.body.id, function(data) {
-
+    db.updateDb.deleteById(req.body.id, function() {
+      //send response
+      res.send(201);
     });
   }
 }

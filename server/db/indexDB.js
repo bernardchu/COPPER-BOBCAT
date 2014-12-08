@@ -155,7 +155,7 @@ var updateDb = {
  * @param {string} answer  - the stringified answer to the question
  * @param {int} difficulty - guestion difficulty between 0 - 10
  */
-  addQuestion : function(question, answer, difficulty){
+  addQuestion : function(question, answer, difficulty, callback){
     var newQuestion = Question.build({
       question: question,
       answer: answer,
@@ -164,6 +164,7 @@ var updateDb = {
 
     newQuestion.save().success(function() {
       console.log('Question Added');
+      callback();
     }).error(function(err){
       console.log('There was an error creating: ' + err);
     });
@@ -213,7 +214,7 @@ var updateDb = {
     .success(function(data) {
       data.destroy().success(function() {
         console.log('deleted');
-        //Do something on success
+        callback();
       });
     });
   }
