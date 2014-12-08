@@ -1,9 +1,22 @@
 
 <!-- Potential Swiping Functionality (caused errors on Iphone 6) ng-swipe-left="tap()" -->
-<md-card id='container' class='noselect' ng-controller='QuestionsController' ng-click="tap()">
+<div ng-controller='QuestionsController'>
+<div id='container' class='noselect' ng-click='tap(userAnswer)'>
   <span id='code' ng-if="!questions.isAnswered" class='fontSize' hljs source="serverQuestions[questions.index].question">
   </span>
   <h1 id='answer' class='center' ng-if="questions.isAnswered">
-      {{serverQuestions[questions.index].answer}}
-   </h1>
-</md-card>
+      {{answerDisplay}}
+  </h1> 
+</div>
+
+<section layout="row" id='footer' layout-align="center center" ng-if="!questions.isAnswered">
+    <i class="fa fa-chevron-left icon-large" id='arrow-left' ng-click='flip("left")'></i>
+    <input label="Answer" type="text" ng-model='userAnswer'></input>
+    <md-button class="md-raised" ng-click='tap(userAnswer)'>Submit</md-button>
+    <i class="fa fa-chevron-right icon-large" id='arrow-right' ng-click='flip("right")'></i>
+</section>
+
+<!-- <div class='horizontalCenter'> -->
+  
+<!-- </div> -->
+</div>
