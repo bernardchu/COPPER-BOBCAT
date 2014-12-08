@@ -45,6 +45,7 @@ app.use('/api/questions', questionRouter);
 app.use('/auth', authRouter); 
 app.use('/api/account', accountRouter);
 
+
 require('./questions/questionRoutes.js')(questionRouter);
 require('./auth/authRoutes.js')(authRouter);
 require('./account/accountRoutes.js')(accountRouter);

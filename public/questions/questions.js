@@ -2,8 +2,6 @@ angular.module('copperBobcat.questions', [])
 .controller('QuestionsController', function ($scope, Questions, $http, $state) {
   angular.extend($scope, Questions);
 
-  console.log($scope);
-
   Questions.getQuestions()
     .then(function(res) {
       if (res === 'Forbidden') {
@@ -15,9 +13,17 @@ angular.module('copperBobcat.questions', [])
     });
 
   $scope.answerDisplay = '';
+  $scope.userAnswer = '';
 
-  $scope.tap = function(){
+  $scope.flip = function(dir){
+    if(dir === 'left') {
+      $scope.questions.index -= 1;
+    } else if(dir === 'right') {
+      $scope.questions.index += 1;
+    }
+  }
 
+  $scope.tap = function(userAnswer){
     if($scope.questions.isAnswered) {
       $scope.questions.isAnswered = false;
       $scope.questions.index += 1;
@@ -26,23 +32,21 @@ angular.module('copperBobcat.questions', [])
       }
     } else {
       $scope.answerDisplay = 'The answer is: ' + $scope.serverQuestions[$scope.questions.index].answer;
-      if($scope.userAnswer === $scope.serverQuestions[$scope.questions.index].toString()) {
+      
+      if(userAnswer === $scope.serverQuestions[$scope.questions.index].answer.toString()) {
         $scope.answerDisplay += ' you got it RIGHT!';
       } else {
         $scope.answerDisplay += ' you got it WRONG!';
       }
+
       $scope.userAnswer = '';
       $scope.questions.isAnswered = true;
     }
   };
 }).factory('Questions', function($http) {
-  //Linked list?
+  
   var questions = {};
-  //Line break in questions is to fix uneven indenting in the pre tag
-  //This is a hack ans should be removed eventually.
-  // questions.list = [{question:"\nfunction add(a, b) {\n return a + b \n} \nadd(12, 3)", answer: '15'},
-  //                   {question:"\nfunction subtract(a, b) {\n return a - b \n} \nsubtract(12, 3)", answer: '9'},
-  //                   {question:"\nfunction divide(a, b) {\n return a / b \n} \ndivide(12, 3)", answer: '4'}];
+  
   questions.index = 0;
   questions.isAnswered = false;
   
