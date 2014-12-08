@@ -20,11 +20,11 @@
   "dependencies": {
     "express": "^4.10.4",
     "express-session": "^1.9.3",
+    "jsdoc": "^3.3.0-alpha11",
     "mysql": "^2.5.3",
     "passport": "^0.2.1",
     "passport-github": "^0.1.5",
     "passport-google": "^0.3.0",
-    "mysql": "^2.5.3",
     "sequelize": "^2.0.0-rc2"
   }
 }
