@@ -1,27 +1,37 @@
 <md-card id='container' class='noselect' >
+  <div ng-controller="AdminController">
+      <p>
+          <button ng-click="reloadData()" type="button" class="btn btn-info">
+              <i class="fa fa-refresh"></i>&nbsp;Reload data
+          </button>
+      </p>
 
-    <table datatable="" class="row-border hover" >
-      <thead>
-        <th>ID</th>
-        <th>Question</th>
-        <th>Answer</th>
-        <th>Difficulty</th>
-        <th>Created At</th>
-        <th>Updated At</th>
-      </thead>
-      <tbody>
-        <tr ng-repeat="question in adminData" >
-          <td>{{question.id}}</td>
-          <td>{{question.question}}</td>
-          <td>{{question.answer}}</td>
-          <td>{{question.difficulty}}</td>
-          <td>{{question.createdAt}}</td>
-          <td>{{question.updatedAt}}</td>
-        </tr>
-      </tbody>
-    </table>
+      <form >
+        Question <br>
+        <textarea ng-model="question.text"></textarea><br>
+        Answer <br>
+        <input type="text" ng-model="question.answer"> <br>
+        Select Difficulty <br>
+        <select name="Difficulty" id="difficulty-level" ng-model="question.difficulty" ngRequired><br>
+          <option selected="selected">Select Difficulty</option>
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+        </select>
 
-    {{adminData}}
+        <input type="submit" ng-click="addQuestion(question)" value="Add Question" />
 
+      </form>
+
+
+      <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover"></table>
+  </div>
 </md-card>
-
