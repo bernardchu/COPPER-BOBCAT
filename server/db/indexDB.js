@@ -201,7 +201,24 @@ var updateDb = {
 
   modifyCategory : function(){
 
+  },
+
+  deleteById : function(id, callback){
+
+
+    Question.find({where: {id: id}})
+    .error(function(err) {
+      console.error('There was an error retrieving users: ' + err);
+    })
+    .success(function(data) {
+      data.destroy().success(function() {
+        console.log('deleted');
+        //Do something on success
+      });
+    });
   }
+
+
 };
 
 

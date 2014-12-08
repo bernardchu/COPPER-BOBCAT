@@ -2,6 +2,7 @@ var express = require('express');
 var session = require('express-session');
 var config = require('./helpers/oauth.js');
 var passport = require('passport');
+var parser = require('body-parser');
 var GithubStrategy = require('passport-github').Strategy;
 var app = express();
 
@@ -47,6 +48,13 @@ var accountRouter = express.Router();
 app.use(session({ secret: 'my_precious' }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+/** 
+  * Body Parser
+  */
+
+app.use(parser.urlencoded({extended : true}));
+app.use(parser.json());
 
 /** 
   * Assign routes to appropriate router

@@ -6,5 +6,9 @@ var ensureAuthenticated = require('../helpers/ensureAuthenticated.js')
 	* Catches '/' route, runs the ensureAuthenticated function, and delegates request to controller
 	*/
 module.exports = function (app) {
-  app.get('/', ensureAuthenticated, questionController.getQuestions);
-};
+  app.get('/', ensureAuthenticated,  questionController.getQuestions);
+
+  app.post('/addQuestion',  questionController.addQuestion);
+  app.post('/delete',  questionController.deleteQuestion);
+
+};//ensureAuthenticated,
