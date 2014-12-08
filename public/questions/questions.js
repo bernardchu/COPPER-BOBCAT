@@ -15,6 +15,8 @@ angular.module('copperBobcat.questions', [])
   $scope.answerDisplay = '';
 
   $scope.showAlert = function(ev) {
+    var that = this;
+
     $scope.answerDisplay = 'The answer is: ' + $scope.serverQuestions[$scope.questions.index].answer;
       
     if(this.userAnswer === $scope.serverQuestions[$scope.questions.index].answer.toString()) {
@@ -31,7 +33,9 @@ angular.module('copperBobcat.questions', [])
         .content($scope.answerDisplay)
         .ok('Next Question')
         .targetEvent(ev)
-    )
+    ).then(function(){
+      that.flip('right');
+    })
   };
 
   $scope.flip = function(dir){
@@ -50,27 +54,6 @@ angular.module('copperBobcat.questions', [])
       
     }
   }
-
-  $scope.tap = function(userAnswer){
-    if($scope.questions.isAnswered) {
-      $scope.questions.isAnswered = false;
-      $scope.questions.index += 1;
-      if ($scope.questions.index >= $scope.serverQuestions.length) {
-        $state.go('finished');
-      }
-    } else {
-      $scope.answerDisplay = 'The answer is: ' + $scope.serverQuestions[$scope.questions.index].answer;
-      
-      if(userAnswer === $scope.serverQuestions[$scope.questions.index].answer.toString()) {
-        $scope.answerDisplay += ' you got it RIGHT!';
-      } else {
-        $scope.answerDisplay += ' you got it WRONG!';
-      }
-
-      $scope.userAnswer = '';
-      $scope.questions.isAnswered = true;
-    }
-  };
 }).factory('Questions', function($http) {
   
   var questions = {};

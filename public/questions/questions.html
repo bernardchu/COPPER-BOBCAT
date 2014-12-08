@@ -1,21 +1,12 @@
 
 <!-- Potential Swiping Functionality (caused errors on Iphone 6) ng-swipe-left="tap()" -->
 <div>
-<div class='carousel'>
-  <div class='carousel-inner'>
-  <!--<span  id='code' ng-if="!questions.isAnswered" class='fontSize' hljs source="serverQuestions[questions.index].question">-->
-  <span ng-repeat="question in serverQuestions"  class='code carousel-item font-size' class='fontSize' hljs source="question.question">
-  </span>
-  <!--<h1 id='answer' class='center' ng-if="questions.isAnswered">
-      {{answerDisplay}}
-  </h1>--> 
-</div>
-</div>
-
+<span  id='container' ng-if="!questions.isAnswered" class='code fontSize' hljs source="serverQuestions[questions.index].question">
+ </span>
 <section layout="row" id='footer' layout-align="center center">
-    <!-- <i class="fa fa-chevron-left icon-large" id='arrow-left' ng-click='flip("left")'></i> -->
+    <i class="fa fa-chevron-left icon-large" id='arrow-left' ng-click='flip("left")'></i>
     <input label="Answer" type="text" ng-model='userAnswer'></input>
     <md-button class="md-raised" ng-click="showAlert($event)">Submit</md-button>
-    <!-- <i class="fa fa-chevron-right icon-large" id='arrow-right' ng-click='flip("right")'></i> -->
+    <i class="fa fa-chevron-right icon-large" id='arrow-right' ng-click='flip("right")'></i>
 </section>
 </div>
