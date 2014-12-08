@@ -13,37 +13,41 @@ angular.module('copperBobcat.questions', [])
 
   $scope.alert = '';
   $scope.answerDisplay = '';
-  $scope.userAnswer = '';
 
-  $scope.showAlert = function(ev, userAnswer) {
+  $scope.showAlert = function(ev) {
     $scope.answerDisplay = 'The answer is: ' + $scope.serverQuestions[$scope.questions.index].answer;
       
-    if(userAnswer === $scope.serverQuestions[$scope.questions.index].answer.toString()) {
+    if(this.userAnswer === $scope.serverQuestions[$scope.questions.index].answer.toString()) {
       $scope.answerDisplay += ' you got it RIGHT!';
     } else {
       $scope.answerDisplay += ' you got it WRONG!';
     }
 
-    $scope.userAnswer = '';
-    $scope.questions.isAnswered = true;
+    this.userAnswer = '';
 
     $mdDialog.show(
       $mdDialog.alert()
-        .title('This is an alert title')
+        .title('Wow you answered a question!')
         .content($scope.answerDisplay)
         .ok('Next Question')
         .targetEvent(ev)
-
-    ).then(function(){
-      $scope.questions.isAnswered = false;     
-    });
+    )
   };
 
   $scope.flip = function(dir){
     if(dir === 'left') {
-      $scope.questions.index -= 1;
+      if($scope.questions.index === 0) {
+        $scope.questions.index = $scope.serverQuestions.length - 1;
+      } else {
+        $scope.questions.index -= 1;  
+      }
     } else if(dir === 'right') {
-      $scope.questions.index += 1;
+      if($scope.questions.index === $scope.serverQuestions.length - 1) {
+        $scope.questions.index = 0;  
+      } else {
+        $scope.questions.index += 1;  
+      }
+      
     }
   }
 
@@ -87,7 +91,8 @@ angular.module('copperBobcat.questions', [])
 
   return {
     questions: questions,
-    getQuestions: getQuestions
+    getQuestions: getQuestions,
+    userAnswer: ''
   };
 
 });
