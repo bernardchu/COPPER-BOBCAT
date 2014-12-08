@@ -6,7 +6,5 @@ var accountController = require('./accountController.js');
 	* Catches routes, runs the ensureAuthenticated function, and delegates request to controller
 	*/
 module.exports = function (app) {
-  app.get('/', ensureAuthenticated, accountController.account);
   app.get('/logout', accountController.logout);
-
 };
