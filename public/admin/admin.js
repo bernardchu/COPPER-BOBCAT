@@ -39,9 +39,7 @@ angular.module('copperBobcat.admin', ['datatables'])
             data: {'id' : id}
           })
           .then(function(res){
-            console.log(res);
             $scope.dtOptions.reloadData(); 
-            $scope.$apply();
           });
     };
 
