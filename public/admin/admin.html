@@ -1,11 +1,6 @@
 <md-card id='container' class='noselect' >
   <div ng-controller="AdminController">
-      <p>
-          <button ng-click="reloadData()" type="button" class="btn btn-info">
-              <i class="fa fa-refresh"></i>&nbsp;Reload data
-          </button>
-      </p>
-
+    
       <form >
         Question <br>
         <textarea ng-model="question.text"></textarea><br>
@@ -28,7 +23,6 @@
         </select>
 
         <input type="submit" ng-click="addQuestion(question)" value="Add Question" />
-
       </form>
 
 

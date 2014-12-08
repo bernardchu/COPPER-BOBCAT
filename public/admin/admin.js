@@ -16,6 +16,7 @@ angular.module('copperBobcat.admin', ['datatables'])
             data: data
           })
           .then(function(res){
+            $scope.question = {};
             $scope.dtOptions.reloadData(); 
           });
     };
@@ -47,7 +48,7 @@ angular.module('copperBobcat.admin', ['datatables'])
       .withPaginationType('full_numbers')
       .withOption('createdRow', function(row, data, dataIndex){
         $compile(angular.element(row).contents())($scope);
-    });
+    }).withOption('order', [0, 'desc']);
 
     $scope.dtColumns = [
         DTColumnBuilder.newColumn('id').withTitle('ID'),
