@@ -5,7 +5,10 @@ var Sequelize = require('Sequelize');
     host: 'us-cdbr-azure-west-a.cloudapp.net'
   });
 
-  /** @type {model} Defines the sequelize User model */
+  /**
+   * Defines the sequelize User model
+   * @type {model}
+   */
   var User = sequelize.define('user', {
     username: Sequelize.STRING, 
     displayName: Sequelize.STRING,
@@ -14,7 +17,7 @@ var Sequelize = require('Sequelize');
 
   /**
    * Defines the sequelze Category model
-   * @object {model}
+   * @type {model}
    */
   var Category = sequelize.define('category', {
     categoryName: Sequelize.STRING,
@@ -41,10 +44,6 @@ Question.hasMany(Category);
 ***********************************************/
 //sequelize.sync({force: true});
 
-
-/********************************************************************
-* Helper functions 
-*********************************************************************/
 
 /**
  * Queries DB for all or an optional query
@@ -73,34 +72,66 @@ function modelQuery(Model, callback, query){
 
 
 /**
- * Database Querying Functions For Getting Data
+ * A colleciton of Database Querying Functions For Getting Data
  * The query must be an object in the sequelize format.  
  * Example: ' {where: {name: 'John' } }' 
+ * @type {object}
  * @param {function} callback - A callback to recieve the returned data from the database.
- * @param {object} query - A query in the sequelize  
+ * @param {object} query - A query in the sequelize format
  */
 
 var queryDb = {
 
+/**
+ * Gets all users, with optional query param to get indidividual users
+ * @type {function}
+ * @param {function} callback - The sequelize model.
+ * @param {object} query - A query in the sequelize format.  
+ */
+
   getUsers : function(callback, query){
     modelQuery(User, callback, query);
   }, 
+
+/**
+ * Gets all questions, with optional query param to get indidividual question
+ * @type {function}
+ * @param {function} callback - The sequelize model.
+ * @param {object} query - A query in the sequelize format.  
+ */
   getQuestions : function(callback, query){
     modelQuery(Question, callback, query);
-  }, 
+  },
+
+/**
+ * Gets all categories, with optional query param to get indidividual category
+ * @type {function}
+ * @param {function} callback - The sequelize model.
+ * @param {object} query - A query in the sequelize format.  
+ */ 
   getCategories : function(callback, query){
     modelQuery(Category, callback, query);
   }
 };
 
 
-/********************************************************************
-* Database Querying Functions For Creating and Modifying Data
-* Each function takes arguments to add or modify on the database
-* Errors or Success will be logged in the node console
-*********************************************************************/
-
+/**
+ * A collection of Database Querying Functions For Creating and Modifying Data
+ * Each function takes arguments to add or modify on the database
+ * Errors or Success will be logged in the node console
+ * @type  {object}
+ */
 var updateDb = {
+
+
+/**
+ * A function to add a user to the datbase
+ * @type {function}
+ * @param {string} username - Username returned by gitHub authentication
+ * @param {string} displayName - Display Name returned by gitHub authentication
+ * @param {string} gitId - Git ID returned by gitHub authentication 
+ */
+
   addUser : function(username, displayName, gitId){
 
     var newUser = User.build({
@@ -117,6 +148,13 @@ var updateDb = {
 
   },
 
+/**
+ * A function to add a user to the datbase
+ * @type {function}
+ * @param {string} question - the stringified question to be saved
+ * @param {string} answer  - the stringified answer to the question
+ * @param {int} difficulty - guestion difficulty between 0 - 10
+ */
   addQuestion : function(question, answer, difficulty){
     var newQuestion = Question.build({
       question: question,
@@ -132,6 +170,12 @@ var updateDb = {
 
   },
 
+
+/**
+ * A function to add a user to the datbase
+ * @type {function}
+ * @param {string} categoryName - the name of the category.  A category slug will also be created with spaces replaced by '-'. 
+ */
   addCategory : function(categoryName){
     var newCategory = Category.build({
       categoryName : categoryName,
@@ -145,6 +189,8 @@ var updateDb = {
     });
   }, 
 
+
+ //Add modification function here
   modifyUser : function(){
 
   },
