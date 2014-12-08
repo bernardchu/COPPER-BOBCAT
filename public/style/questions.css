@@ -52,7 +52,7 @@ input {
    position:fixed;
    left:0px;
    bottom:0px;
-   /*height:50px;*/
+   height:3em;
    width:100%;
    background:#999;
 }
@@ -108,10 +108,6 @@ pre {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-md-backdrop, .md-dialog-container {
-    z-index: 3000;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
