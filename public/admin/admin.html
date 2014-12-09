@@ -1,10 +1,6 @@
-<md-card id='container' class='noselect' >
+<div id='container' class='noselect' >
   <div ng-controller="AdminController">
-      <p>
-          <button ng-click="reloadData()" type="button" class="btn btn-info">
-              <i class="fa fa-refresh"></i>&nbsp;Reload data
-          </button>
-      </p>
+          {{data}}
 
       <form >
         Question <br>
@@ -28,10 +24,10 @@
         </select>
 
         <input type="submit" ng-click="addQuestion(question)" value="Add Question" />
-
       </form>
 
+      <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
 
-      <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover"></table>
-  </div>
-</md-card>
+      </table>
+
+</div>

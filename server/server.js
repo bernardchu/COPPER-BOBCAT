@@ -56,7 +56,8 @@ app.use(passport.session());
 app.use(parser.urlencoded({extended : true}));
 app.use(parser.json());
 
-/** 
+ /** 
+  *added comments in server code
   * Assign routes to appropriate router
   */
 app.use('/api/questions', questionRouter); 
