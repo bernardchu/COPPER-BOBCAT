@@ -196,8 +196,18 @@ var updateDb = {
 
   },
 
-  modifyQuestion : function(){
-
+  modifyQuestion : function(id, field, value, callback){
+    Question.find({where: {id: id}})
+    .error(function(err) {
+      console.error('There was an error retrieving users: ' + err);
+    })
+    .success(function(quest) {
+      quest[field] = value;
+      quest.save([field]).success(function() {
+       console.log('question updated');
+       callback();
+      })
+    });
   },
 
   modifyCategory : function(){

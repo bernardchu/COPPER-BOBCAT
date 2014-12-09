@@ -1,6 +1,7 @@
 <md-card id='container' class='noselect' >
   <div ng-controller="AdminController">
-    
+          {{data}}
+
       <form >
         Question <br>
         <textarea ng-model="question.text"></textarea><br>
@@ -25,7 +26,8 @@
         <input type="submit" ng-click="addQuestion(question)" value="Add Question" />
       </form>
 
+      <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
 
-      <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover"></table>
-  </div>
+      </table>
+
 </md-card>

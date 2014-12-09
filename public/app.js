@@ -5,9 +5,10 @@ var bobcatApp = angular.module('copperBobcat', [
   'hljs',
   'ngTouch',
   'ngMaterial',
-  'datatables',
   'mobile-angular-ui',
-  'mobile-angular-ui.gestures'
+  'mobile-angular-ui.gestures',
+  'datatables', 
+  'xeditable'
 ]);
 
 bobcatApp.config(
