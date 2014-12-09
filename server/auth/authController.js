@@ -1,8 +1,8 @@
 var db = require('../db/indexDB.js');
 
 /**
-  * @param {object} authenticate - authenticateCB will run after authentication
-  * @param {object} authenticateCB
+  * @param {object} authenticate - empty placeholder, no need for anything here yet.
+  * @param {object} authenticateCB - will be invoked after returning from Github authentication.
   * If a user is authenticated but does not exist in the DB, the user will be added
   * Session will be created and user will be redirected to root
   * Check the getUsers() method from /db/indexDB.js
