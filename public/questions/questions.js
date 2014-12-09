@@ -1,6 +1,10 @@
 angular.module('copperBobcat.questions', [])
 .controller('QuestionsController', function ($scope, Questions, $http, $state, $mdDialog) {
   angular.extend($scope, Questions);
+
+  /*
+    Here we're getting the questions from the database
+  */
   Questions.getQuestions()
     .then(function(res) {
       if (res === 'Forbidden') {
@@ -11,10 +15,9 @@ angular.module('copperBobcat.questions', [])
       }
     });
 
-  $scope.alert = '';
-  $scope.answerDisplay = '';
+  
 
-  $scope.showAlert = function(ev) {
+  $scope.showAnswer = function(ev) {
     var that = this;
 
     $scope.answerDisplay = 'The answer is: ' + $scope.serverQuestions[$scope.questions.index].answer;
@@ -26,7 +29,6 @@ angular.module('copperBobcat.questions', [])
     }
 
     this.userAnswer = '';
-
     $mdDialog.show(
       $mdDialog.alert()
         .title('Wow you answered a question!')
@@ -38,16 +40,18 @@ angular.module('copperBobcat.questions', [])
     })
   };
 
+  /*
+    This function flips between the questions.
+  */
   $scope.flip = function(dir){
     if(dir === 'left') {
-      if($scope.questions.index === 0) {
-        $scope.questions.index = $scope.serverQuestions.length - 1;
-      } else {
-        $scope.questions.index -= 1;  
+      if($scope.questions.index > 0) {
+        $scope.questions.index -= 1;
       }
     } else if(dir === 'right') {
       if($scope.questions.index === $scope.serverQuestions.length - 1) {
-        $scope.questions.index = 0;  
+        $scope.questions.index = 0;
+        $state.go('finished');
       } else {
         $scope.questions.index += 1;  
       }
@@ -75,7 +79,8 @@ angular.module('copperBobcat.questions', [])
   return {
     questions: questions,
     getQuestions: getQuestions,
-    userAnswer: ''
+    userAnswer: '',
+    answerDisplay: ''
   };
 
 });
